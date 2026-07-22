@@ -1141,6 +1141,137 @@ img,
 .current-party-poster:hover img {
   filter: none !important;
 }
+/* 모바일 헤더 최종 수정 */
+@media screen and (max-width: 800px) {
+  .header {
+    position: fixed !important;
+    z-index: 1000 !important;
+    top: 0 !important;
+    left: 0 !important;
+
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    width: 100% !important;
+    height: 72px !important;
+    padding: 0 20px !important;
+
+    background: rgba(5, 5, 5, 0.96) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* 모바일에서는 상단 티켓 버튼 숨기기 */
+  .header .header-ticket,
+  .header > .button {
+    display: none !important;
+  }
+
+  /* 모바일 로고 */
+  .header .logo {
+    position: relative !important;
+    z-index: 1002 !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    width: 120px !important;
+    height: 65px !important;
+
+    margin: 0 !important;
+  }
+
+  .header .logo-image {
+    display: block !important;
+
+    width: 115px !important;
+    height: auto !important;
+    max-width: none !important;
+    max-height: 60px !important;
+
+    transform: none !important;
+
+    filter:
+      drop-shadow(0 2px 4px rgba(0, 0, 0, 0.95))
+      drop-shadow(0 0 7px rgba(255, 255, 255, 0.6)) !important;
+  }
+
+  /* 햄버거 버튼 */
+  .header .menu-button {
+    position: relative !important;
+    z-index: 1003 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 7px !important;
+
+    width: 48px !important;
+    height: 48px !important;
+    margin: 0 0 0 auto !important;
+    padding: 10px !important;
+
+    border: 0 !important;
+    background: transparent !important;
+  }
+
+  .header .menu-button span {
+    display: block !important;
+
+    width: 28px !important;
+    height: 2px !important;
+
+    background: white !important;
+  }
+
+  /* 메뉴를 누르기 전에는 화면 밖에 숨김 */
+  .header .navigation {
+    position: fixed !important;
+    z-index: 1001 !important;
+    inset: 0 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    gap: 24px !important;
+
+    width: 100% !important;
+    height: 100dvh !important;
+    margin: 0 !important;
+    padding: 100px 32px 50px !important;
+
+    background: #050505 !important;
+
+    transform: translateX(100%) !important;
+    transition: transform 0.4s ease !important;
+  }
+
+  /* 햄버거를 누르면 메뉴 표시 */
+  .header .navigation.open {
+    transform: translateX(0) !important;
+  }
+
+  .header .navigation a {
+    color: white !important;
+
+    font-family: "Black Han Sans", "Noto Sans KR", sans-serif !important;
+    font-size: clamp(34px, 10vw, 50px) !important;
+    font-weight: 400 !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.04em !important;
+  }
+
+  /* 햄버거가 X로 변경 */
+  .header .menu-button.active span:first-child {
+    transform: translateY(4.5px) rotate(45deg) !important;
+  }
+
+  .header .menu-button.active span:last-child {
+    transform: translateY(-4.5px) rotate(-45deg) !important;
+  }
+}
   </style>
   
 </head>
@@ -1183,18 +1314,17 @@ img,
     <!-- HERO -->
     <section class="hero" id="home">
       <video
-        class="hero-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        poster="https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=1920"
-      >
-        <source
-          src="https://videos.pexels.com/video-files/853800/853800-hd_1920_1080_30fps.mp4"
-          type="video/mp4"
-        >
-      </video>
+  class="hero-video"
+  autoplay
+  muted
+  loop
+  playsinline
+>
+  <source
+    src="https://res.cloudinary.com/v8i4mvga/video/upload/v1784736967/C9502_fhrq3g.mp4"
+    type="video/mp4"
+  >
+</video>
 
       <div class="hero-overlay"></div>
       <div class="hero-noise"></div>
@@ -1268,7 +1398,7 @@ img,
             18,900₩ PULLUPBOI•CHANXER•SIM•PINO···   </p>
 
           <!-- 예매 링크를 href 안에 입력하세요 -->
-          <a href="#" class="button" target="_blank" rel="noopener noreferrer">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfQsQlXmJcps9nrpYtxQ4QYjn-qwwDM9x0dr6b_tmgB4rAX7g/viewform" class="button" target="_blank" rel="noopener noreferrer">
             TICKETS <span>↗</span>
           </a>
         </div>

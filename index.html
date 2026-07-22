@@ -8,6 +8,9 @@
     name="description"
     content="101 BREAKTIME — 음악, 패션, 크리에이터가 함께하는 Z세대 컬처 플랫폼"
   >
+  <link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/favicon.png">
+
 
   <title>101 BREAKTIME</title>
 
@@ -1271,7 +1274,486 @@ img,
   .header .menu-button.active span:last-child {
     transform: translateY(-4.5px) rotate(-45deg) !important;
   }
+}.masonry {
+  columns: unset;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
+
+.masonry figure,
+.masonry figure.tall,
+.masonry figure.wide {
+  height: auto;
+  margin: 0;
+  aspect-ratio: 4 / 5;
+}
+
+@media (max-width: 800px) {
+  .masonry {
+    grid-template-columns: 1fr;
+  }
+}/* 갤러리 3장 크게 가로 정렬 */
+.gallery .masonry {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 20px !important;
+
+  columns: unset !important;
+
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+.gallery .masonry figure,
+.gallery .masonry figure.tall,
+.gallery .masonry figure.wide {
+  display: block !important;
+
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  margin: 0 !important;
+
+  aspect-ratio: 4 / 5 !important;
+  overflow: hidden;
+}
+
+.gallery .masonry figure img {
+  display: block !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  object-fit: cover !important;
+  filter: none !important;
+}
+
+/* 태블릿 */
+@media screen and (max-width: 900px) {
+  .gallery .masonry {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* 모바일 */
+@media screen and (max-width: 600px) {
+  .gallery .masonry {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .gallery .masonry figure,
+  .gallery .masonry figure.tall,
+  .gallery .masonry figure.wide {
+    aspect-ratio: 4 / 5 !important;
+  }
+}
+
+/* 지난 파티: 동일한 4:5 이미지 2개 */
+.events .event-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: clamp(18px, 3vw, 42px) !important;
+  width: 100% !important;
+}
+
+.events .event-card,
+.events .event-card.offset,
+.events .event-card.wide {
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.events .event-image {
+  width: 100% !important;
+  aspect-ratio: 4 / 5 !important;
+  height: auto !important;
+  cursor: zoom-in;
+}
+
+.events .event-image img,
+.gallery .masonry figure img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  cursor: zoom-in;
+}
+
+/* 갤러리: 중첩 너비 영향을 받지 않고 3장이 전체 폭 사용 */
+.gallery > .masonry {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(14px, 2vw, 28px) !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  columns: unset !important;
+}
+
+/* 이미지 클릭 확대 화면 */
+.image-lightbox {
+  position: fixed;
+  z-index: 99999;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.94);
+}
+
+.image-lightbox.open { display: flex; }
+
+.image-lightbox img {
+  width: auto !important;
+  height: auto !important;
+  max-width: min(94vw, 1400px) !important;
+  max-height: 90vh !important;
+  object-fit: contain !important;
+  filter: none !important;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  width: 52px;
+  height: 52px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+body.lightbox-open { overflow: hidden; }
+
+@media screen and (max-width: 700px) {
+  .events .event-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .events .event-information {
+    display: block;
+  }
+
+  .events .event-information h3 {
+    font-size: clamp(20px, 6vw, 30px) !important;
+  }
+
+  .gallery > .masonry {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* EXPANDED ABOUT PAGE */
+.about.about-expanded {
+  padding-right: clamp(24px, 6vw, 110px);
+  padding-left: clamp(24px, 6vw, 110px);
+  overflow: hidden;
+}
+
+.about-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(45px, 8vw, 130px);
+  align-items: end;
+  padding-bottom: clamp(90px, 12vw, 180px);
+}
+
+.about-kicker,
+.about-block-label,
+.about-card-number,
+.about-media-label {
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.about-hero h2 {
+  margin: 25px 0 0;
+  font-size: clamp(66px, 10vw, 158px);
+  line-height: 0.82;
+}
+
+.about-hero h2 span {
+  display: block;
+  color: transparent;
+  -webkit-text-stroke: 1.5px #fff;
+}
+
+.about-intro-lead {
+  max-width: 760px;
+  margin: 0 0 28px;
+  color: #fff;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: clamp(23px, 2.5vw, 42px);
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: -0.045em;
+}
+
+.about-intro-lead strong {
+  padding: 0 0.12em;
+  background: #fff;
+  color: #000;
+}
+
+.about-copy {
+  max-width: 690px;
+  margin: 0;
+  color: #aaa;
+  font-size: clamp(14px, 1.1vw, 18px);
+  line-height: 1.9;
+  word-break: keep-all;
+}
+
+.about-copy + .about-copy { margin-top: 18px; }
+
+.about-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(310px, 0.8fr);
+  gap: clamp(30px, 5vw, 80px);
+  align-items: center;
+  padding: clamp(70px, 9vw, 140px) 0;
+  border-top: 1px solid #292929;
+}
+
+.about-feature-media,
+.about-side-image,
+.about-film {
+  position: relative;
+  overflow: hidden;
+  background: #151515;
+}
+
+.about-feature-media { aspect-ratio: 4 / 5; }
+
+.about-feature-media img,
+.about-side-image img,
+.about-film video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: none !important;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.about-feature-media:hover img,
+.about-side-image:hover img { transform: scale(1.035); }
+
+.about-media-label {
+  position: absolute;
+  z-index: 2;
+  right: 14px;
+  bottom: 14px;
+  padding: 10px 12px;
+  background: #fff;
+  color: #000;
+}
+
+.about-feature-copy h3,
+.about-editorial-copy h3,
+.about-direction h3 {
+  margin: 25px 0 32px;
+  font-family: "Black Han Sans", "Noto Sans KR", sans-serif;
+  font-size: clamp(42px, 5.8vw, 92px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  word-break: keep-all;
+}
+
+.about-feature-copy h3 em,
+.about-editorial-copy h3 em,
+.about-direction h3 em {
+  color: transparent;
+  font-style: normal;
+  -webkit-text-stroke: 1px #fff;
+}
+
+.about-services {
+  padding: clamp(90px, 12vw, 180px) 0;
+  border-top: 1px solid #292929;
+}
+
+.about-services-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: end;
+  margin-bottom: clamp(55px, 7vw, 100px);
+}
+
+.about-services-head h3 {
+  margin: 0;
+  font-family: "Archivo Black", "Noto Sans KR", sans-serif;
+  font-size: clamp(56px, 9vw, 140px);
+  line-height: 0.85;
+  letter-spacing: -0.065em;
+}
+
+.about-services-head p {
+  max-width: 340px;
+  margin: 0;
+  color: #888;
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: right;
+}
+
+.about-service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid #444;
+  border-left: 1px solid #444;
+}
+
+.about-service-card {
+  position: relative;
+  min-height: 330px;
+  padding: clamp(28px, 4vw, 58px);
+  border-right: 1px solid #444;
+  border-bottom: 1px solid #444;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.about-service-card:hover {
+  background: #fff;
+  color: #000;
+}
+
+.about-service-card h4 {
+  margin: 75px 0 24px;
+  font-family: "Archivo Black", "Noto Sans KR", sans-serif;
+  font-size: clamp(30px, 4vw, 58px);
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.about-service-card p {
+  max-width: 480px;
+  margin: 0;
+  color: #999;
+  font-size: clamp(13px, 1vw, 16px);
+  line-height: 1.8;
+  word-break: keep-all;
+}
+
+.about-service-card:hover p { color: #333; }
+
+.about-film {
+  width: calc(100% + clamp(48px, 12vw, 220px));
+  margin-left: calc(clamp(24px, 6vw, 110px) * -1);
+  aspect-ratio: 16 / 7;
+}
+
+.about-film::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,.35), transparent 45%, rgba(0,0,0,.2));
+  pointer-events: none;
+}
+
+.about-film-title {
+  position: absolute;
+  z-index: 2;
+  bottom: clamp(24px, 5vw, 70px);
+  left: clamp(24px, 6vw, 110px);
+  margin: 0;
+  font-family: "Archivo Black", sans-serif;
+  font-size: clamp(38px, 7vw, 110px);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.about-editorial {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(45px, 9vw, 145px);
+  align-items: center;
+  padding: clamp(100px, 13vw, 200px) 0;
+  border-bottom: 1px solid #292929;
+}
+
+.about-side-image { aspect-ratio: 4 / 5; }
+
+.about-direction {
+  padding: clamp(100px, 14vw, 220px) 0 clamp(30px, 5vw, 80px);
+  text-align: center;
+}
+
+.about-direction .about-copy {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.about-final-statement {
+  max-width: 1100px;
+  margin: clamp(70px, 9vw, 130px) auto 0;
+  padding-top: clamp(45px, 6vw, 85px);
+  border-top: 1px solid #444;
+  color: #fff;
+  font-family: "Black Han Sans", "Noto Sans KR", sans-serif;
+  font-size: clamp(40px, 6vw, 92px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.055em;
+  word-break: keep-all;
+}
+
+.about-final-statement span {
+  display: block;
+  margin-top: 20px;
+  color: transparent;
+  -webkit-text-stroke: 1px #fff;
+}
+
+@media screen and (max-width: 900px) {
+  .about-hero,
+  .about-feature,
+  .about-editorial {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero { align-items: start; }
+  .about-feature-media { max-width: 680px; }
+  .about-editorial-copy { order: -1; }
+  .about-side-image { max-width: 620px; }
+  .about-film { aspect-ratio: 4 / 3; }
+}
+
+@media screen and (max-width: 600px) {
+  .about.about-expanded {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .about-hero h2 { font-size: clamp(58px, 20vw, 94px); }
+  .about-intro-lead { font-size: 23px; }
+  .about-services-head { display: block; }
+  .about-services-head p { margin-top: 28px; text-align: left; }
+  .about-service-grid { grid-template-columns: 1fr; }
+  .about-service-card { min-height: 280px; }
+  .about-film {
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    aspect-ratio: 4 / 5;
+  }
+  .about-film-title { left: 20px; }
+}
+
   </style>
   
 </head>
@@ -1289,7 +1771,7 @@ img,
     <nav class="navigation" aria-label="메인 메뉴">
       <a href="#home">홈</a>
       <a href="#current-party">진행 중인 파티</a>
-      <a href="#events">지난 행사</a>
+      <a href="#events">지난 파티</a>
       <a href="#gallery">갤러리</a>
       <a href="#about">브랜드 소개</a>
       <a href="#contact">문의</a>
@@ -1371,7 +1853,7 @@ img,
       </div>
     </div>
 
-    <!-- CURRENT PARTY: 아래 이미지·제목·날짜·장소만 바꿔서 사용하세요 -->
+    <!-- UPCOMING PARTY: 아래 이미지·제목·날짜·장소만 바꿔서 사용하세요 -->
     <section class="section current-party" id="current-party">
       <div class="current-party-layout">
         <div class="current-party-poster reveal">
@@ -1384,10 +1866,10 @@ img,
         </div>
 
         <div class="current-party-copy reveal">
-          <p class="eyebrow">CURRENT PARTY / 01</p>
+          <p class="eyebrow">UPCOMING PARTY / 01</p>
 
           <!-- 진행 중인 파티 제목 -->
-          <h2>101LUNCH TIME<br>With JACKJACK</h2>
+          <h2>101 LUNCH TIME<br>With JACKJACK</h2>
 
           <!-- 날짜와 장소 -->
           <p class="current-party-meta">2026.07.26 · 12:00</p>
@@ -1408,7 +1890,7 @@ img,
     <!-- EVENTS -->
     <section class="section events" id="events">
       <div class="section-heading reveal">
-        <p class="section-number">01 / EVENTS</p>
+        <p class="section-number">02 / PAST PARTY</p>
 
         <h2>
           우리가 만든<br>
@@ -1425,12 +1907,12 @@ img,
         <article class="event-card reveal">
           <div class="event-image">
             <img
-              src="https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=1400"
+              src="images/지난포스터1.png"
               alt="한강 크루즈 파티"
             >
 
             <span class="event-number">001</span>
-            <span class="sold-out">SOLD OUT</span>
+          
           </div>
 
           <div class="event-information">
@@ -1450,7 +1932,7 @@ img,
         <article class="event-card offset reveal">
           <div class="event-image">
             <img
-              src="https://images.pexels.com/photos/2114365/pexels-photo-2114365.jpeg?auto=compress&cs=tinysrgb&w=1400"
+              src="images/지난포스터2.png"
               alt="카페 레이브 DJ 공연"
             >
 
@@ -1467,6 +1949,8 @@ img,
           </div>
         </article>
 
+      </div>
+
       <a
   href="https://www.instagram.com/101breaktime/"
   class="text-link reveal"
@@ -1481,7 +1965,7 @@ img,
     <!-- GALLERY -->
     <section class="section gallery" id="gallery">
       <div class="section-heading reveal">
-        <p class="section-number">02 / GALLERY</p>
+        <p class="section-number">03 / GALLERY</p>
 
         <h2>
           우리가 포착한<br>
@@ -1490,80 +1974,143 @@ img,
       </div>
 
       <div class="masonry">
-        <figure class="tall reveal">
-          <img
-            src="https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg?auto=compress&cs=tinysrgb&w=1000"
-            alt="공연 중인 아티스트"
-          >
-          <figcaption>LIVE / 01</figcaption>
-        </figure>
+  <figure class="tall reveal">
+    <img
+      src="images/gallery-01.jpg"
+      alt="101 BREAKTIME 파티 현장"
+    >
+    <figcaption>2026 Prom Party Live / 01</figcaption>
+  </figure>
 
-        <figure class="reveal">
-          <img
-            src="https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=1000"
-            alt="페스티벌 관객"
-          >
-          <figcaption>CROWD / 02</figcaption>
-        </figure>
+  <figure class="reveal">
+    <img
+      src="images/gallery-02.jpg"
+      alt="101 BREAKTIME 관객"
+    >
+    <figcaption>2026 Prom Party / 02</figcaption>
+  </figure>
 
-        <figure class="reveal">
-          <img
-            src="https://images.pexels.com/photos/2240771/pexels-photo-2240771.jpeg?auto=compress&cs=tinysrgb&w=1000"
-            alt="파티를 즐기는 사람들"
-          >
-          <figcaption>PEOPLE / 03</figcaption>
-        </figure>
-
-        <figure class="wide reveal">
-          <img
-            src="https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=1400"
-            alt="공연장 조명"
-          >
-          <figcaption>NIGHT / 04</figcaption>
-        </figure>
-
-        <figure class="tall reveal">
-          <img
-            src="https://images.pexels.com/photos/164828/pexels-photo-164828.jpeg?auto=compress&cs=tinysrgb&w=1000"
-            alt="DJ 장비"
-          >
-          <figcaption>DJ BOOTH / 05</figcaption>
-        </figure>
-
-        <figure class="reveal">
-          <img
-            src="https://images.pexels.com/photos/2426085/pexels-photo-2426085.jpeg?auto=compress&cs=tinysrgb&w=1000"
-            alt="파티 현장"
-          >
-          <figcaption>ENERGY / 06</figcaption>
-        </figure>
-      </div>
+  <figure class="tall reveal">
+    <img
+      src="images/gallery-03.jpg"
+      alt="101 BREAKTIME DJ 공연"
+    >
+    <figcaption>wiht Marv / 03</figcaption>
+  </figure>
+</div>
     </section>
 
-    <!-- ABOUT -->
-    <section class="section about" id="about">
-      <div class="about-grid">
-        <h2 class="reveal">
-          단순한 파티가<br>
-          아닙니다.
-        </h2>
-
-        <div class="about-text reveal">
-          <p>
-            101 BREAKTIME은 음악, 패션, 크리에이터가 한 공간에서
-            부딪히는 Z세대 컬처 플랫폼입니다.
-          </p>
-
-          <p>
-            우리는 익숙한 공간을 낯선 경험으로 바꾸고,
-            관객을 구경꾼이 아닌 장면의 일부로 만듭니다.
-          </p>
-
-          <a href="#contact" class="text-link">
-            브랜드 이야기
-            <span>↗</span>
-          </a>
+    <!-- ABOUT 101 BREAKTIME -->
+    <section class="section about about-expanded" id="about">
+      <div class="about-hero">
+        <div class="reveal">
+          <p class="about-kicker">04 / ABOUT 101 BREAKTIME</p>
+          <h2>WE CREATE<span>PARTY CULTURE.</span></h2>
         </div>
+
+        <div class="reveal">
+          <p class="about-intro-lead">
+            101 BREAKTIME은 새로운 파티 문화를 <strong>만들고, 전파하고, 함께 즐기는</strong> 파티 브랜드입니다.
+          </p>
+          <p class="about-copy">
+            우리는 단순히 이벤트를 개최하는 것이 아니라, 음악과 사람, 공간을 연결해 누구나 자연스럽게 새로운 문화를 경험할 수 있는 순간을 만들어갑니다.
+          </p>
+        </div>
+      </div>
+
+      <div class="about-feature">
+        <figure class="about-feature-media reveal">
+          <img src="images/gallery-01.jpg" alt="101 BREAKTIME 파티 현장">
+          <figcaption class="about-media-label">PARTY AS CULTURE / 01</figcaption>
+        </figure>
+
+        <div class="about-feature-copy reveal">
+          <p class="about-block-label">THE EXPERIENCE</p>
+          <h3>익숙한 공간을<br><em>새로운 문화로.</em></h3>
+          <p class="about-copy">
+            학교라는 익숙한 콘셉트를 새롭게 해석한 졸업 파티부터 DJ Party, 체육 대회, Pop-up Event, Flea Market까지. 매번 새로운 공간과 새로운 아이디어를 통해 101 BREAKTIME만의 경험을 만들어가고 있습니다.
+          </p>
+          <p class="about-copy">
+            우리가 만드는 파티는 단순히 즐기고 끝나는 이벤트가 아닙니다. 새로운 사람을 만나고, 새로운 음악을 발견하며, 하나의 문화가 시작되는 공간입니다.
+          </p>
+        </div>
+      </div>
+
+      <div class="about-services">
+        <div class="about-services-head reveal">
+          <h3>WHAT<br>WE DO</h3>
+          <p>ONLINE TO OFFLINE.<br>음악과 사람, 공간을 연결하는 네 가지 방식.</p>
+        </div>
+
+        <div class="about-service-grid">
+          <article class="about-service-card reveal">
+            <span class="about-card-number">01 / PARTY</span>
+            <h4>Party</h4>
+            <p>DJ Party, Live Performance, 체육 대회, Pop-up Event, Flea Market 등 다양한 형태의 오프라인 이벤트를 기획하며 음악과 공간, 사람을 연결합니다.</p>
+          </article>
+
+          <article class="about-service-card reveal">
+            <span class="about-card-number">02 / MAGAZINE</span>
+            <h4>Magazine</h4>
+            <p>새로운 음악과 장르, 국내외 문화와 트렌드를 쉽고 재미있게 소개하며, 파티 문화와 연결되는 다양한 이야기를 전합니다.</p>
+          </article>
+
+          <article class="about-service-card reveal">
+            <span class="about-card-number">03 / INTERVIEW</span>
+            <h4>Interview</h4>
+            <p>행사 관객 및 아티스트 등 파티를 구성하는 사람들의 에너지를 온라인으로 전달합니다.</p>
+          </article>
+
+          <article class="about-service-card reveal">
+            <span class="about-card-number">04 / CURATION</span>
+            <h4>Music Curation</h4>
+            <p>새로운 음악과 아티스트를 발견할 수 있는 큐레이션을 통해 더 많은 사람들이 다양한 음악과 문화를 경험할 수 있도록 합니다.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="about-film reveal">
+        <video autoplay muted loop playsinline aria-label="101 BREAKTIME 파티 영상">
+          <source src="https://res.cloudinary.com/v8i4mvga/video/upload/v1784736967/C9502_fhrq3g.mp4" type="video/mp4">
+        </video>
+        <p class="about-film-title">OUR CULTURE<br>IN MOTION.</p>
+      </div>
+
+      <div class="about-editorial">
+        <figure class="about-side-image reveal">
+          <img src="images/gallery-02.jpg" alt="101 BREAKTIME 관객과 파티 문화">
+          <figcaption class="about-media-label">PEOPLE &amp; CULTURE / 02</figcaption>
+        </figure>
+
+        <div class="about-editorial-copy reveal">
+          <p class="about-block-label">OUR CULTURE</p>
+          <h3>우리는 새로운 것이 가진<br><em>가치를 믿습니다.</em></h3>
+          <p class="about-copy">
+            유명한 것보다 앞으로 주목받을 음악을, 익숙한 공간보다 새로운 가능성이 있는 공간을, 이미 알려진 문화보다 사람들이 아직 경험하지 못한 문화를 먼저 소개합니다.
+          </p>
+          <p class="about-copy">
+            파티는 단순히 술을 마시고 음악을 듣는 자리가 아니라, 서로 다른 사람들이 연결되고 새로운 취향을 발견하는 문화라고 생각합니다.
+          </p>
+          <p class="about-copy">
+            그래서 우리는 다양한 브랜드와 공간, 아티스트, 크리에이터들과 함께 매번 새로운 경험을 만들어가고 있습니다.
+          </p>
+        </div>
+      </div>
+
+      <div class="about-direction reveal">
+        <p class="about-block-label">OUR DIRECTION</p>
+        <h3>온라인에서 발견하고,<br><em>오프라인에서 경험합니다.</em></h3>
+        <p class="about-copy">
+          온라인에서 문화를 발견하고, 오프라인에서 직접 경험하며, 다시 그 경험이 새로운 콘텐츠로 이어지는 것. 101 BREAKTIME은 이러한 선순환을 통해 더 많은 사람들이 파티 문화를 쉽고 자연스럽게 즐길 수 있는 환경을 만들어갑니다.
+        </p>
+        <p class="about-copy">
+          앞으로도 새로운 음악과 사람, 공간을 연결하며 기존의 틀을 벗어난 다양한 파티와 콘텐츠를 선보일 것입니다. 우리가 만드는 것은 단순한 행사가 아닙니다.
+        </p>
+
+        <p class="about-final-statement">
+          사람들이 새로운 문화를 가장 먼저 만나고,
+          <span>함께 즐기는 순간.</span>
+        </p>
       </div>
     </section>
 
@@ -1620,6 +2167,11 @@ img,
       © 2026 101 BREAKTIME
     </p>
   </footer>
+
+  <div class="image-lightbox" role="dialog" aria-modal="true" aria-label="확대 이미지" aria-hidden="true">
+    <button class="lightbox-close" type="button" aria-label="확대 이미지 닫기">×</button>
+    <img src="" alt="">
+  </div>
 
   <script>
     const header = document.querySelector(".header");
@@ -1687,6 +2239,42 @@ img,
 
     document.querySelectorAll(".reveal").forEach((element) => {
       revealObserver.observe(element);
+    });
+
+    // 지난 파티와 갤러리 이미지를 클릭하면 크게 표시
+    const lightbox = document.querySelector(".image-lightbox");
+    const lightboxImage = lightbox.querySelector("img");
+    const lightboxClose = lightbox.querySelector(".lightbox-close");
+
+    function openLightbox(image) {
+      lightboxImage.src = image.currentSrc || image.src;
+      lightboxImage.alt = image.alt || "확대 이미지";
+      lightbox.classList.add("open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.classList.add("lightbox-open");
+      lightboxClose.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("lightbox-open");
+      lightboxImage.src = "";
+    }
+
+    document.querySelectorAll(".event-image img, .gallery .masonry img").forEach((image) => {
+      image.addEventListener("click", () => openLightbox(image));
+    });
+
+    lightboxClose.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && lightbox.classList.contains("open")) {
+        closeLightbox();
+      }
     });
   </script>
 </body>

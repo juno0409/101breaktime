@@ -1061,6 +1061,79 @@ footer .logo {
   transform: scale(1.025);
 }
 
+.current-party-placeholder {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: clamp(28px, 5vw, 60px);
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    #111;
+  background-size: 32px 32px;
+  color: #fff;
+  text-align: center;
+}
+
+.current-party-placeholder::before,
+.current-party-placeholder::after {
+  content: "";
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.current-party-placeholder::before {
+  top: 20px;
+  left: 20px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+
+.current-party-placeholder::after {
+  right: 20px;
+  bottom: 20px;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+}
+
+.current-party-placeholder span {
+  display: block;
+  font-family: "Archivo Black", "Noto Sans KR", sans-serif;
+  font-size: clamp(38px, 5vw, 76px);
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+}
+
+.current-party-placeholder small {
+  display: block;
+  margin-top: 28px;
+  color: #777;
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.button.is-disabled {
+  border-color: #606060 !important;
+  background: #606060 !important;
+  color: #aaa !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  box-shadow: none !important;
+  opacity: 0.72;
+}
+
+.button.is-disabled span {
+  color: #aaa !important;
+}
+
 .current-badge {
   position: absolute;
   top: 18px;
@@ -1778,13 +1851,13 @@ body.lightbox-open { overflow: hidden; }
     </nav>
 
     <a
-  href="https://docs.google.com/forms/d/e/1FAIpQLSfQsQlXmJcps9nrpYtxQ4QYjn-qwwDM9x0dr6b_tmgB4rAX7g/viewform"
-  class="button"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  TICKETS <span>↗</span>
-</a>
+      href="#"
+      class="button header-ticket is-disabled"
+      aria-disabled="true"
+      tabindex="-1"
+    >
+      TICKETS <span>—</span>
+    </a>
 
     <button class="menu-button" type="button" aria-label="메뉴 열기">
       <span></span>
@@ -1853,35 +1926,32 @@ body.lightbox-open { overflow: hidden; }
       </div>
     </div>
 
-    <!-- UPCOMING PARTY: 아래 이미지·제목·날짜·장소만 바꿔서 사용하세요 -->
+    <!-- NEXT PARTY COMING SOON -->
     <section class="section current-party" id="current-party">
       <div class="current-party-layout">
         <div class="current-party-poster reveal">
-          <!-- 진행 중인 파티 포스터 파일 경로 -->
-          <img
-            src="images/current-party.jpg"
-            alt="현재 진행 중인 파티 포스터"
-          >
-          <span class="current-badge">NOW ON SALE</span>
+          <div class="current-party-placeholder">
+            <span>NEXT PARTY<br>COMING SOON..</span>
+            <small>101 BREAKTIME / STAY TUNED</small>
+          </div>
         </div>
 
         <div class="current-party-copy reveal">
-          <p class="eyebrow">UPCOMING PARTY / 01</p>
+          <p class="eyebrow">NEXT PARTY / COMING SOON</p>
 
-          <!-- 진행 중인 파티 제목 -->
-          <h2>101 LUNCH TIME<br>With JACKJACK</h2>
+          <h2>다음 쉬는 시간을<br>준비 중입니다.</h2>
 
-          <!-- 날짜와 장소 -->
-          <p class="current-party-meta">2026.07.26 · 12:00</p>
-          <p class="current-party-meta">서울특별시 용산구 이태원로 134<br>134, Itaewon-ro, Yongsan-gu, Seoul</p>
-
-          <!-- 파티 소개 문구 -->
           <p class="current-party-description">
-            18,900₩ PULLUPBOI•CHANXER•SIM•PINO···   </p>
+            새로운 파티 소식과 티켓 오픈 일정은 곧 공개됩니다.
+          </p>
 
-          <!-- 예매 링크를 href 안에 입력하세요 -->
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfQsQlXmJcps9nrpYtxQ4QYjn-qwwDM9x0dr6b_tmgB4rAX7g/viewform" class="button" target="_blank" rel="noopener noreferrer">
-            TICKETS <span>↗</span>
+          <a
+            href="#"
+            class="button is-disabled"
+            aria-disabled="true"
+            tabindex="-1"
+          >
+            TICKETS <span>—</span>
           </a>
         </div>
       </div>

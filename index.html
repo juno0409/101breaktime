@@ -348,6 +348,33 @@
       letter-spacing: 0.15em;
     }
 
+    .sound-control {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .volume-control {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .volume-slider {
+      width: 105px;
+      height: 3px;
+      accent-color: #ffffff;
+      cursor: pointer;
+    }
+
+    .volume-value {
+      min-width: 30px;
+      color: rgba(255, 255, 255, 0.75);
+      font-family: "Inter", sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.08em;
+    }
+
     /* MOVING TEXT */
 
     .ticker {
@@ -713,6 +740,10 @@
     /* TABLET */
 
     @media (max-width: 800px) {
+      .volume-control {
+        display: none;
+      }
+
       .header {
         height: 68px;
       }
@@ -1905,9 +1936,23 @@ body.lightbox-open { overflow: hidden; }
         <span>SCROLL TO ENTER</span>
         <div class="hero-line"></div>
 
-        <button class="sound-button" type="button">
-          SOUND OFF
-        </button>
+        <div class="sound-control">
+          <button class="sound-button" type="button">
+            SOUND OFF
+          </button>
+
+          <label class="volume-control" aria-label="영상 음량 조절">
+            <input
+              class="volume-slider"
+              type="range"
+              min="0"
+              max="100"
+              value="60"
+              aria-label="음량"
+            >
+            <span class="volume-value">60%</span>
+          </label>
+        </div>
       </div>
     </section>
 
@@ -2250,6 +2295,10 @@ body.lightbox-open { overflow: hidden; }
 
     const heroVideo = document.querySelector(".hero-video");
     const soundButton = document.querySelector(".sound-button");
+    const volumeSlider = document.querySelector(".volume-slider");
+    const volumeValue = document.querySelector(".volume-value");
+
+    heroVideo.volume = Number(volumeSlider.value) / 100;
 
     // 스크롤 시 헤더 배경 표시
     window.addEventListener(
@@ -2290,6 +2339,16 @@ body.lightbox-open { overflow: hidden; }
       soundButton.textContent = heroVideo.muted
         ? "SOUND OFF"
         : "SOUND ON";
+    });
+
+    // PC용 영상 음량 조절
+    volumeSlider.addEventListener("input", () => {
+      const volume = Number(volumeSlider.value) / 100;
+
+      heroVideo.volume = volume;
+      heroVideo.muted = volume === 0;
+      volumeValue.textContent = `${volumeSlider.value}%`;
+      soundButton.textContent = heroVideo.muted ? "SOUND OFF" : "SOUND ON";
     });
 
     // 스크롤 등장 애니메이션

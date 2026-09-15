@@ -1195,6 +1195,26 @@ footer .logo {
   letter-spacing: -0.06em;
 }
 
+.current-party-copy h2 .with-text {
+  display: block;
+  margin-top: 12px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.28em;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.08em;
+}
+
+.current-party-lineup {
+  margin: 0 0 24px;
+  color: var(--white);
+  font-family: "Black Han Sans", "Noto Sans KR", sans-serif;
+  font-size: clamp(28px, 3.6vw, 58px);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+}
+
 .current-party-meta {
   margin: 0 0 15px;
   color: var(--white);
@@ -1882,10 +1902,10 @@ body.lightbox-open { overflow: hidden; }
     </nav>
 
     <a
-      href="#"
-      class="button header-ticket is-disabled"
-      aria-disabled="true"
-      tabindex="-1"
+      href="https://forms.gle/CAwH8RmbkyW66PreA"
+      class="button header-ticket"
+      target="_blank"
+      rel="noopener noreferrer"
     >
       TICKETS <span>—</span>
     </a>
@@ -1971,30 +1991,31 @@ body.lightbox-open { overflow: hidden; }
       </div>
     </div>
 
-    <!-- NEXT PARTY COMING SOON -->
+    <!-- CURRENT PARTY -->
     <section class="section current-party" id="current-party">
       <div class="current-party-layout">
         <div class="current-party-poster reveal">
-          <div class="current-party-placeholder">
-            <span>NEXT PARTY<br>COMING SOON..</span>
-            <small>101 BREAKTIME / STAY TUNED</small>
-          </div>
+          <img
+            src="images/current-party.jpg?v=1"
+            alt="101BREAKTIME with 재하, lov3rboi, 대동단결 파티 포스터"
+          >
         </div>
 
         <div class="current-party-copy reveal">
-          <p class="eyebrow">NEXT PARTY / COMING SOON</p>
+          <p class="eyebrow">CURRENT PARTY / 101 BREAKTIME</p>
 
-          <h2>다음 행사를<br>준비 중입니다.</h2>
+          <h2>101BREAKTIME<span class="with-text">with</span></h2>
 
+          <p class="current-party-lineup">재하, lov3rboi, 대동단결</p>
           <p class="current-party-description">
-            새로운 파티 소식과 티켓 오픈 일정은 곧 공개됩니다.
+            18,000₩ · 서울 마포구 서교동 407-6 1층
           </p>
 
           <a
-            href="#"
-            class="button is-disabled"
-            aria-disabled="true"
-            tabindex="-1"
+            href="https://forms.gle/CAwH8RmbkyW66PreA"
+            class="button"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             TICKETS <span>—</span>
           </a>
